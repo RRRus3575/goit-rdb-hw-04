@@ -1,0 +1,8 @@
+SELECT * FROM  order_details 
+inner join orders on orders.id = order_details.order_id
+inner join products on products.id = product_id
+inner join suppliers on suppliers.id = supplier_id
+inner join categories on categories.id = category_id
+inner join shippers on shippers.id = shipper_id
+inner join customers on customers.id = customer_id
+inner join employees on employees.id = employee_id;
