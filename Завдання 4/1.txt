@@ -1,1 +1,61 @@
+1.
 SELECT COUNT(product_id) AS row_count FROM  order_details 
+inner join orders on order_details.order_id = orders.id
+inner join customers on orders.customer_id =  customers.id
+inner join products on order_details.product_id = products.id 
+inner join categories on products.category_id = categories.id 
+inner join shippers on  orders.shipper_id = shippers.id 
+inner join employees on orders.employee_id = employees.employee_id
+inner join suppliers on products.supplier_id = suppliers.id;
+
+2.
+Не змінилось, тому що не змінюється перше значення.
+
+3.
+SELECT * FROM  order_details 
+inner join orders on order_details.order_id = orders.id
+inner join customers on orders.customer_id =  customers.id
+inner join products on order_details.product_id = products.id 
+inner join categories on products.category_id = categories.id 
+inner join shippers on  orders.shipper_id = shippers.id 
+inner join employees on orders.employee_id = employees.employee_id
+inner join suppliers on products.supplier_id = suppliers.id
+where orders.employee_id > 3 and orders.employee_id < 11;
+
+4.
+SELECT product_id, COUNT(product_id) as row_count, SUM(quantity) as all_quantity  FROM  order_details 
+inner join orders on order_details.order_id = orders.id
+inner join customers on orders.customer_id =  customers.id
+inner join products on order_details.product_id = products.id 
+inner join categories on products.category_id = categories.id 
+inner join shippers on  orders.shipper_id = shippers.id 
+inner join employees on orders.employee_id = employees.employee_id
+inner join suppliers on products.supplier_id = suppliers.id
+GROUP BY order_details.product_id;
+
+5.
+SELECT product_id, COUNT(product_id) as row_count, SUM(quantity) as all_quantity  FROM  order_details 
+inner join orders on order_details.order_id = orders.id
+inner join customers on orders.customer_id =  customers.id
+inner join products on order_details.product_id = products.id 
+inner join categories on products.category_id = categories.id 
+inner join shippers on  orders.shipper_id = shippers.id 
+inner join employees on orders.employee_id = employees.employee_id
+inner join suppliers on products.supplier_id = suppliers.id
+GROUP BY order_details.product_id
+having AVG(quantity) > 21;
+
+6.
+SELECT product_id, COUNT(product_id) as row_count, SUM(quantity) as all_quantity  FROM  order_details 
+inner join orders on order_details.order_id = orders.id
+inner join customers on orders.customer_id =  customers.id
+inner join products on order_details.product_id = products.id 
+inner join categories on products.category_id = categories.id 
+inner join shippers on  orders.shipper_id = shippers.id 
+inner join employees on orders.employee_id = employees.employee_id
+inner join suppliers on products.supplier_id = suppliers.id
+GROUP BY order_details.product_id
+having AVG(quantity) > 21
+order by row_count desc;
+
+7.
